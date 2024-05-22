@@ -68,10 +68,12 @@
     <Compile Include="Assets\Scripts\UI\InventorySlot.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\PlayerInteractions.cs" />
+    <Compile Include="Assets\Scripts\Time\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Time\GameTimeStamp.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemData.cs" />
     <Compile Include="Assets\Scripts\UI\HandInventorySlot.cs" />
     <Compile Include="Assets\Scripts\Inventory\EquipmentData.cs" />
+    <Compile Include="Assets\Scripts\Time\ITimeTracker.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />

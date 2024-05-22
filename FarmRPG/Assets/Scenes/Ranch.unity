@@ -1840,15 +1840,15 @@ MonoBehaviour:
     m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 4
-    m_MaxSize: 49
+    m_MinSize: 3
+    m_MaxSize: 62
     m_Alignment: 3
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: AM 6:00
+  m_Text: AM 23:00
 --- !u!222 &737517054
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3257,6 +3257,7 @@ GameObject:
   - component: {fileID: 1338100788}
   - component: {fileID: 1338100787}
   - component: {fileID: 1338100789}
+  - component: {fileID: 1338100790}
   m_Layer: 0
   m_Name: Manager
   m_TagString: Untagged
@@ -3325,6 +3326,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   toolEquipSlot: {fileID: 657336657}
+  timeText: {fileID: 737517053}
+  dateText: {fileID: 1754815012}
   InventoryPanel: {fileID: 1724183762}
   toolHandSlot: {fileID: 2001382931}
   toolSlots:
@@ -3348,6 +3351,27 @@ MonoBehaviour:
   - {fileID: 1753673559}
   itemNameText: {fileID: 1932682726}
   itemDescriptionText: {fileID: 852725714}
+--- !u!114 &1338100790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338100786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d9d5efbcc2d4b442b40de0162bfe6b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeStamp:
+    year: 0
+    season: 0
+    daysOfTheWeek: 0
+    day: 0
+    hour: 0
+    minute: 0
+  timeScale: 1
+  sunTransform: {fileID: 389506493}
 --- !u!1001 &1394418337
 PrefabInstance:
   m_ObjectHideFlags: 0

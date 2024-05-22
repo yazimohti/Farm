@@ -1,10 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using UnityEditor;
 using UnityEngine;
 
-public class Land : MonoBehaviour
+public class Land : MonoBehaviour, ITimeTracker
 {
     public enum LandStatus
     {
@@ -15,6 +14,9 @@ public class Land : MonoBehaviour
     new Renderer renderer;
     //The selection gameobject to enable when the player is selecting the land
     public GameObject select;
+
+    //Cache the time the land was watered 
+    GameTimeStamp timeWatered;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +26,8 @@ public class Land : MonoBehaviour
         SwitchLandStatus(LandStatus.Soil);
         //Deselect the land ny default
         Select(false);
+        //Add this to TimeManager's Listener list 
+        TimeManager.Instance.RegisterTracker(this);
     }
     public void SwitchLandStatus(LandStatus statusToSwitch)
     {
@@ -43,6 +47,9 @@ public class Land : MonoBehaviour
             case LandStatus.Watered:
                 //switch to the watered material
                 materialToSwitch = wateredMat;
+
+                //Cache the time it was watered
+                timeWatered = TimeManager.Instance.GetGameTimeStamp();
                 break;
         }
         //Get the renderer to apply the changes
@@ -76,6 +83,23 @@ public class Land : MonoBehaviour
                 case EquipmentData.ToolType.WateringCan:
                     SwitchLandStatus(LandStatus.Watered);
                     break;
+            }
+        }
+    }
+
+    public void UpdateClock(GameTimeStamp timeStamp)
+    {
+        //Checked if 24 hours has passed since last watered 
+        if(landStatus == LandStatus.Watered)
+        {   
+            //Hours since the land was watered 
+            int hoursElapsed = GameTimeStamp.CompareTimeStamps(timeStamp,timeWatered);
+            Debug.Log(hoursElapsed + "Since this was watered");
+
+            if(hoursElapsed > 24)
+            {
+                //Dry up 
+                SwitchLandStatus(LandStatus.Farmland);
             }
         }
     }
