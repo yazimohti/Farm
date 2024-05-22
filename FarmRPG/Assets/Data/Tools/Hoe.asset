@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d13f70664bfa29b4894a02677dce1fe3, type: 3}
+  m_Name: Hoe
+  m_EditorClassIdentifier: 
+  description: "Bi\u015Feyler Kazar"
+  thumbnail: {fileID: 1775191736, guid: d898a5f581433904ba7525eeac3a1a8e, type: 3}
+  gameModel: {fileID: 0}
+  toolType: 0
