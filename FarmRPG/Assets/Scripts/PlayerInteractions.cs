@@ -64,4 +64,13 @@ public class PlayerInteractions : MonoBehaviour
         }
         Debug.Log("Interact");
     }
+    public void ItemInteract()
+    {
+        //If the player is holding something, keep it in his inventory
+        if(InventoryManager.Instance.equippedItem != null)
+        {
+            InventoryManager.Instance.HandToInventory(InventorySlot.InventoryType.Item);
+            return;
+        }
+    }
 }
