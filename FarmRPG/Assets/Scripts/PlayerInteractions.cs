@@ -5,8 +5,14 @@ using UnityEngine;
 
 public class PlayerInteractions : MonoBehaviour
 {  
-    Land selectedLand = null;
     PlayerController playerController;
+    //The Land the player is currently selecting
+    Land selectedLand = null;
+
+    //The Interactable object the player is currently selecting
+    InteractableObject selectedInteractable = null;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +40,18 @@ public class PlayerInteractions : MonoBehaviour
             Land land = other.GetComponent<Land>();
             SelectLand(land);
             return;
+        }
+        //Check if the player is going to interact with an item
+        if(other.tag == "Item")
+        {
+            //Set the interactable to the currently selected interactable 
+            selectedInteractable = other.GetComponent<InteractableObject>();
+            return;
+        }
+        //Deselect the interactable if the player is not standing on anything at the moment
+        if(selectedInteractable != null)
+        {
+            selectedInteractable = null;
         }
         //Deselect the land if the player is not standing on any land at the moment
         if(selectedLand !=null)
@@ -66,11 +84,23 @@ public class PlayerInteractions : MonoBehaviour
     }
     public void ItemInteract()
     {
+        
         //If the player is holding something, keep it in his inventory
         if(InventoryManager.Instance.equippedItem != null)
         {
             InventoryManager.Instance.HandToInventory(InventorySlot.InventoryType.Item);
             return;
+        }
+        if(InventoryManager.Instance.equippedItem != null)
+        {
+            return;
+        }
+
+        //Check if there is an interactable selected
+        if(selectedInteractable != null)
+        {
+            //Pick it up
+            selectedInteractable.PickUp();
         }
     }
 }

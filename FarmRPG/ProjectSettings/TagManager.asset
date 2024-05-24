@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Land
   - Grass
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -13,8 +14,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Item
+  - Player
   - 
   - 
   - 

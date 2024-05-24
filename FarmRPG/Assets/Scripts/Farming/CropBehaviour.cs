@@ -42,6 +42,16 @@ public class CropBehaviour : MonoBehaviour
         //Convert Hours to Grow into minutes
         maxGrowth = GameTimeStamp.HoursToMinutes(hoursToGrow);
 
+        //Check if it is regrowable
+        if(seedToGrow.regrowable)
+        {
+            //Get the RegrowableHarvestBehaviour from gameObject
+            RegrowableHarvestBehaviour regrowableHarvest = harvestable.GetComponent<RegrowableHarvestBehaviour>();
+
+            //Initialise harvestable
+            regrowableHarvest.SetParent(this);
+        }
+
         //Set the initial state to seed
         SwitchState(CropState.Seed);
         
@@ -75,21 +85,36 @@ public class CropBehaviour : MonoBehaviour
         switch(stateToSwitch)
         {
             case CropState.Seed:
-            //Enable the seed GameObject
-            seed.SetActive(true);
-            break;
+                //Enable the seed GameObject
+                seed.SetActive(true);
+                break;
             
             case CropState.Seedling:
-            //Enable the seedling GameObject
-            seedling.SetActive(true);
-            break;
+                //Enable the seedling GameObject
+                seedling.SetActive(true);
+                break;
 
             case CropState.Harvestable:
-            //Enable the harvestable GameObject
-            harvestable.SetActive(true);
-            break;
+                //Enable the harvestable GameObject
+                harvestable.SetActive(true);
+
+                //If the seed is not regrowable, detach the harvestable from this crop gameobject and destroy it.
+                if(!seedToGrow.regrowable)
+                {
+                    //Unparent it to the crop
+                    harvestable.transform.parent = null;
+                    Destroy(gameObject);
+                }
+                break;
         }
         //Set the current crop state to the state we're switching to
         cropState = stateToSwitch;
+    }
+
+    //Called when the player harvests a regrowable crop. Resets the state to seedling 
+    public void Regrow()
+    {
+        //Switch to state back to seedling
+        SwitchState(CropState.Seedling);
     }
 }

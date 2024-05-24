@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a8990bba9d7b744f9eb7d35bfaab343, type: 3}
+  m_Name: TomatoSeed
+  m_EditorClassIdentifier: 
+  description: Seeds to grow tomato
+  thumbnail: {fileID: -683895879, guid: d898a5f581433904ba7525eeac3a1a8e, type: 3}
+  gameModel: {fileID: 0}
+  daysToGrow: 1
+  cropToYield: {fileID: 11400000, guid: 8cbe8e20b1f7dfc4e8be39218b7426b3, type: 2}
+  seedling: {fileID: 6637476617159130504, guid: 7f353c70579606248bbb0b35a5a84c12, type: 3}
+  regrowable: 1
+  daysToRegrow: 1

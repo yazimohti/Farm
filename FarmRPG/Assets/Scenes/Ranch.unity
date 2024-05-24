@@ -2799,7 +2799,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 15f00588236e0e046b942ecada46e2a4, type: 2}
   - {fileID: 11400000, guid: c97149e222132ed4caad481095693f8b, type: 2}
   - {fileID: 11400000, guid: 5ecd3bf9ca97e7c48a2539d17b756263, type: 2}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 4589c2ed51f594d48ba6dc13e85fda04, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   equippedTool: {fileID: 0}
@@ -4116,6 +4116,14 @@ PrefabInstance:
     - target: {fileID: 6792327054025522797, guid: 64db8d48fab1ceb43a8ee5d52643029a, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6792327054025522797, guid: 64db8d48fab1ceb43a8ee5d52643029a, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8357599854498888125, guid: 64db8d48fab1ceb43a8ee5d52643029a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.26
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
