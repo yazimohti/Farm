@@ -74,6 +74,10 @@ public class PlayerInteractions : MonoBehaviour
     //Triggered when the player presses the interact key
     public void Interact()
     {
+        if(InventoryManager.Instance.SlotEquipped(InventorySlot.InventoryType.Item))
+        {
+            return;
+        }
         //Check if the player is selecting any land
         if(selectedLand != null)
         {
@@ -86,12 +90,12 @@ public class PlayerInteractions : MonoBehaviour
     {
         
         //If the player is holding something, keep it in his inventory
-        if(InventoryManager.Instance.equippedItem != null)
+        if(InventoryManager.Instance.SlotEquipped(InventorySlot.InventoryType.Item))
         {
             InventoryManager.Instance.HandToInventory(InventorySlot.InventoryType.Item);
             return;
         }
-        if(InventoryManager.Instance.equippedItem != null)
+        if(InventoryManager.Instance.SlotEquipped(InventorySlot.InventoryType.Item))
         {
             return;
         }

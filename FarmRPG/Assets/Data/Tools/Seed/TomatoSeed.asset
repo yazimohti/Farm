@@ -15,7 +15,7 @@ MonoBehaviour:
   description: Seeds to grow tomato
   thumbnail: {fileID: -683895879, guid: d898a5f581433904ba7525eeac3a1a8e, type: 3}
   gameModel: {fileID: 0}
-  daysToGrow: 1
+  daysToGrow: 2
   cropToYield: {fileID: 11400000, guid: 8cbe8e20b1f7dfc4e8be39218b7426b3, type: 2}
   seedling: {fileID: 6637476617159130504, guid: 7f353c70579606248bbb0b35a5a84c12, type: 3}
   regrowable: 1

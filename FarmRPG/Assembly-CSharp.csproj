@@ -59,31 +59,49 @@
     <UnityVersion>2022.3.6f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\yazge\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.1\Analyzers\Microsoft.Unity.Analyzers.dll" />
+    <Analyzer Include="C:\Users\yazge\.vscode\extensions\visualstudiotoolsforunity.vstuc-1.0.2\Analyzers\Microsoft.Unity.Analyzers.dll" />
     <Analyzer Include="C:\Program Files (x86)\Unity Hub\2022.3.6f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.SourceGenerators.dll" />
     <Analyzer Include="C:\Program Files (x86)\Unity Hub\2022.3.6f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Inventory\ItemIndex.cs" />
+    <Compile Include="Assets\Scripts\Save\GameSaveState.cs" />
     <Compile Include="Assets\Scripts\Farming\Land.cs" />
+    <Compile Include="Assets\Scripts\SceneTransition\StartPoint.cs" />
+    <Compile Include="Assets\Scripts\SceneTransition\LocationEntryPoint.cs" />
     <Compile Include="Assets\Scripts\Inventory\InteractableObject.cs" />
+    <Compile Include="Assets\Scripts\Inventory\ItemSlotData.cs" />
     <Compile Include="Assets\Scripts\UI\InventorySlot.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryManager.cs" />
     <Compile Include="Assets\Scripts\PlayerInteractions.cs" />
+    <Compile Include="Assets\Scripts\Save\ItemSlotSaveData.cs" />
+    <Compile Include="Assets\Scripts\SceneTransition\LocationManager.cs" />
+    <Compile Include="Assets\Scripts\Save\SaveManager.cs" />
     <Compile Include="Assets\Scripts\Time\TimeManager.cs" />
     <Compile Include="Assets\Scripts\Time\GameTimeStamp.cs" />
+    <Compile Include="Assets\Scripts\GameStateManager.cs" />
+    <Compile Include="Assets\Scripts\Save\CropSaveState.cs" />
+    <Compile Include="Assets\Scripts\Door.cs" />
+    <Compile Include="Assets\Scripts\UI\YesNoPrompt.cs" />
     <Compile Include="Assets\Scripts\Inventory\ItemData.cs" />
+    <Compile Include="Assets\Scripts\Farming\LandSaveState.cs" />
+    <Compile Include="Assets\Scripts\ParentedAnimationEvent.cs" />
     <Compile Include="Assets\Scripts\UI\HandInventorySlot.cs" />
+    <Compile Include="Assets\Scripts\SceneTransition\SceneTransitionManager.cs" />
     <Compile Include="Assets\Scripts\Farming\CropBehaviour.cs" />
     <Compile Include="Assets\Scripts\Farming\RegrowableHarvestBehaviour.cs" />
     <Compile Include="Assets\Scripts\Inventory\EquipmentData.cs" />
     <Compile Include="Assets\Scripts\Time\ITimeTracker.cs" />
     <Compile Include="Assets\Scripts\UI\UIManager.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Save\LandSaveStatement.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Farming\LandManager.cs" />
     <Compile Include="Assets\Scripts\Inventory\SeedData.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\ImportedAssets\Cartoon_Farm_Crops\README.txt" />
+    <None Include="Assets\ImportedAssets\LowpolyVegetationPackFree\Readme.txt" />
     <None Include="Assets\ImportedAssets\Stylized NPC - Peasant Nolant\README.txt" />
   </ItemGroup>
   <ItemGroup>

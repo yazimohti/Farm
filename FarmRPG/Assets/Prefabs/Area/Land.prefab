@@ -125,6 +125,7 @@ MonoBehaviour:
   wateredMat: {fileID: 2100000, guid: 0363e7e3ee9374b4e8dde29e3e61dbd0, type: 2}
   grassMat: {fileID: 0}
   select: {fileID: 6962015082987721540}
+  timeToDry: 24
   cropPrefab: {fileID: 7100316344566117357, guid: 6322817f04925fc46aefb1fe6724ef8b, type: 3}
 --- !u!1 &6962015082987721540
 GameObject:

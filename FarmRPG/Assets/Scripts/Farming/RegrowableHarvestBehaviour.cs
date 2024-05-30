@@ -14,9 +14,11 @@ public class RegrowableHarvestBehaviour : InteractableObject
     public override void PickUp()
     {
          //Set the player's inventory to the item
-        InventoryManager.Instance.equippedItem = item;
+        InventoryManager.Instance.EquipHandSlot(item);
         //Updates the change in the scene
         InventoryManager.Instance.RenderHand();
 
+        //Set the parent crop back to seedling to regrow it
+        parentCrop.Regrow();
     }
 }

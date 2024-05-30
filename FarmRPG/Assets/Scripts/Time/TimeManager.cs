@@ -35,6 +35,11 @@ public class TimeManager : MonoBehaviour
         StartCoroutine(TimeUpdate());
     }
 
+    //Load the time from a save
+    public void LoadTime(GameTimeStamp timeStamp)
+    {
+        this.timeStamp = new GameTimeStamp(timeStamp);
+    }
     IEnumerator TimeUpdate()
     {
         while(true)
@@ -54,6 +59,23 @@ public class TimeManager : MonoBehaviour
             listener.UpdateClock(timeStamp);
         }
         UpdateSunMovement();  
+    }
+    public void SkipTime(GameTimeStamp timeToSkip)
+    {
+        int timeToSkipInMinutes = GameTimeStamp.TimeStampInMinutes(timeToSkip);
+        Debug.Log("Skip time: " + timeToSkipInMinutes);
+        int timeNowInMinutes = GameTimeStamp.TimeStampInMinutes(timeStamp);
+        Debug.Log("Time Now:" + timeNowInMinutes);
+        int differenceInMinutes = timeToSkipInMinutes - timeNowInMinutes;
+        Debug.Log("Difference:" + differenceInMinutes);
+
+        //Check if the timestamp to skip to has already been reached
+        if(differenceInMinutes <= 0) return;
+
+        for(int i = 0; i < differenceInMinutes; i++)
+        {
+            Tick();
+        }
     }
 
     //Day and Night cycle
@@ -92,4 +114,5 @@ public class TimeManager : MonoBehaviour
     {
         listeners.Remove(listener);
     }
+    
 }

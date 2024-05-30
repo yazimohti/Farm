@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,8 @@ public class UIManager : MonoBehaviour, ITimeTracker
     [Header("Status Bar")]
     //Tool equip status on the bar
     public Image toolEquipSlot;
+    //Tool quantity status on the bar
+    public Text toolQuantityText;
 
     //Time UI
     public Text timeText;
@@ -28,6 +31,12 @@ public class UIManager : MonoBehaviour, ITimeTracker
     //Item info box
     public Text itemNameText;
     public Text itemDescriptionText;
+    [Header("Screen Transition")]
+    public GameObject fadeIn;
+    public GameObject fadeOut;
+
+    [Header("Yes No Prompt")]
+    public YesNoPrompt yesNoPrompt;
     private void Awake()
     {
         //If there is more than one instance, destroy the extra
@@ -49,6 +58,36 @@ public class UIManager : MonoBehaviour, ITimeTracker
         //Add UIManager to the list of objects TimeManager will notify when the time updates 
         TimeManager.Instance.RegisterTracker(this);
     }
+    #region FadeIn and FadeOut
+
+    public void FadeOutScreen()
+    {
+        fadeOut.SetActive(true);
+    }
+    public void FadeInScreen()
+    {
+        fadeIn.SetActive(true);
+    }
+    public void OnFadeInComplete()
+    {
+        //Disable fadeIn screen when animation finished
+        fadeIn.SetActive(false);
+    }
+    public void ResetFadeDefaults()
+    {
+        fadeOut.SetActive(false);
+        fadeIn.SetActive(true);
+    }
+
+
+
+    #endregion
+    public void TriggerYesNoPrompt(string message, System.Action onYesCallback)
+    {
+        yesNoPrompt.gameObject.SetActive(true);
+
+        yesNoPrompt.CreatePrompt(message, onYesCallback);
+    }
 
     public void AssignSlotIndex()
     {
@@ -61,12 +100,10 @@ public class UIManager : MonoBehaviour, ITimeTracker
 
     //Render the inventory screen to reflect the Player's Inventory
     public void RenderInventory()
-    {
-        //Get the inventory tool slots from Inventory Manager
-        ItemData[] inventoryToolSlots = InventoryManager.Instance.tools;
-
-        //Get the inventory item slots from Inventory Manager
-        ItemData[] inventoryItemSlots = InventoryManager.Instance.items;
+    {   
+        //Get the respective slots to process
+        ItemSlotData[] inventoryToolSlots = InventoryManager.Instance.GetInventorySlots(InventorySlot.InventoryType.Tool);
+        ItemSlotData[] inventoryItemSlots = InventoryManager.Instance.GetInventorySlots(InventorySlot.InventoryType.Item);
         //Render the Tool section
         RenderInventoryPanel(inventoryToolSlots,toolSlots);
 
@@ -74,13 +111,16 @@ public class UIManager : MonoBehaviour, ITimeTracker
         RenderInventoryPanel(inventoryItemSlots,itemSlots);
 
         //Render the equipped tool slots
-        toolHandSlot.Display(InventoryManager.Instance.equippedTool);
+        toolHandSlot.Display(InventoryManager.Instance.GetEquippedSlot(InventorySlot.InventoryType.Tool));
 
         //Render the equipped item slots
-        itemHandSlot.Display(InventoryManager.Instance.equippedItem);
+        itemHandSlot.Display(InventoryManager.Instance.GetEquippedSlot(InventorySlot.InventoryType.Item));
         
         //Get tool equip from InventoryManager
-        ItemData equippedTool = InventoryManager.Instance.equippedTool;
+        ItemData equippedTool = InventoryManager.Instance.GetEquippedSlotItem(InventorySlot.InventoryType.Tool);
+
+        //Text should be empty by default
+        toolQuantityText.text = ""; 
 
         //Check if there is an item to display
         if(equippedTool != null)
@@ -89,11 +129,18 @@ public class UIManager : MonoBehaviour, ITimeTracker
             toolEquipSlot.sprite = equippedTool.thumbnail;
             
             toolEquipSlot.gameObject.SetActive(true);
+
+            //Get quantity 
+            int toolQuantity = InventoryManager.Instance.GetEquippedSlot(InventorySlot.InventoryType.Tool).quantity;
+            if(toolQuantity > 1)
+            {
+                toolQuantityText.text = toolQuantity.ToString();
+            }
             return;
         }
         toolEquipSlot.gameObject.SetActive(false);
     }
-    public void RenderInventoryPanel(ItemData[] slots, InventorySlot[] UISlots)
+    public void RenderInventoryPanel(ItemSlotData[] slots, InventorySlot[] UISlots)
     {
         for(int i=0;i<UISlots.Length;i++)
         {
